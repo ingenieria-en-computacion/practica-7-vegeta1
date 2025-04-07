@@ -1,4 +1,4 @@
-pragma once
+#pragma once
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -34,8 +34,8 @@ pragma once
 // Macro para implementación
 // ----------------------------
 #define IMPLEMENT_LINKED_LIST(TYPE) \
-    Node_##TYPE* node_##TYPE##__create(TYPE data){\
-        Node_##TYPE* new_node = malloc(sizeof(Node_##TYPE)); \
+    Node_##TYPE* node_##TYPE##_create(TYPE data){\
+        Node_##TYPE* new_node = malloc(sizeof(Node_##TYPE));\
         new_node->data = data;\
         new_node->next = NULL;\
         return new_node;\
@@ -51,7 +51,7 @@ pragma once
     List_##TYPE* list_##TYPE##_create(void) { \
         List_##TYPE* list = malloc(sizeof(List_##TYPE)); \
         if (!list) return NULL; \
-        list->head = list->tail = NULL; \
+        list->head = list->tail = NULL;\
         list->length = 0; \
         return list; \
     } \
@@ -71,7 +71,7 @@ pragma once
         if (!list || pos > list->length) return false; \
         \
         Node_##TYPE* new_node = node_##TYPE##_create(data); \
-        if (!new_node) return false; \        
+        if (!new_node) return false;\
         \
         if (pos == 0) { \
             new_node->next = list->head; \
